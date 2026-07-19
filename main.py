@@ -37,27 +37,26 @@ WHERE e.employeeNumber IS NULL;
 df_employee = pd.read_sql("""
 SELECT e.firstName,
        e.lastName,
-       o.city
+       o.city,
        o.state
 FROM employees e
 LEFT JOIN offices o
 ON e.officeCode = o.officeCode
-ORDER BY e.firstName,e.lastName                                
+ORDER BY e.firstName,e.lastName;                                
 """,conn)
 
 # STEP 4
 # Replace None with your code
 df_contacts = pd.read_sql("""
 SELECT c.contactFirstName,
-       c.contactLastName, 
+       c.contactLastName,
        c.salesRepEmployeeNumber
-FROM customer c
-LEFT JOIN orders 0                         
-ON c.customerNumber=o.customer
+FROM customers c
+LEFT JOIN orders o
+ON c.customerNumber = o.customerNumber
 WHERE o.orderNumber IS NULL
 ORDER BY c.contactLastName;
-""",conn)
-
+""", conn)
 # STEP 5
 # Replace None with your code
 df_payment = pd.read_sql("""
